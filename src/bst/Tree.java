@@ -113,25 +113,22 @@ public class Tree
     public void lowestofMajors(Node root) {
         Node father = null;
         Node node = root.right;
-        while(true){
-            if (node.left == null) {
-                break;
-            }
+        while (node.left != null) {
             father = node;
             node = node.left;
         }
-//        father.setLeftChild(null);
+//        if(father!=null)father.left = null;
         root.setKey(node.getKey());
     }
 
     public void greatestofMinors(Node root) {
-        Node father;
+        Node father = null;
         Node node = root.left;
         while (node.right != null) {
             father = node;
             node = node.right;
         } 
-        //father.setRightChild(null);
+//        if(father!=null)father.right = null;
         root.setKey(node.getKey());
     }
 
