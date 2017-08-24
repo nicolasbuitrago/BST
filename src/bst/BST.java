@@ -25,6 +25,11 @@ public class BST
         tree.orderLevel(tree.root);
         System.out.println("\nRecorrido inroder: ");
         tree.inOrder(tree.root);
+        System.out.println("");
+        removeNode(tree);
+        System.out.println("");
+        System.out.println("Recorrido por niveles: ");
+        tree.orderLevel(tree.root);
     }
     
     public static void insertNodes(Tree tree){
@@ -37,6 +42,13 @@ public class BST
                 }
                 tree.insert(tree.root, newKey);
             }
+    }
+    
+    public static void removeNode(Tree tree){
+        Scanner leer = new Scanner(System.in);
+        System.out.print("Digite el nodo que desea eliminar: ");
+        int key = leer.nextInt();
+        tree.remove(tree.root, key);
     }
     
 }

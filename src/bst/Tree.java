@@ -82,7 +82,7 @@ public class Tree
         }
     }
     //El mio
-    public void remove(Node root, int key){
+    public void removeN(Node root, int key){
         Queue<Node> queue = new LinkedList();
         queue.add(root);
         while (!queue.isEmpty()) {            
@@ -109,5 +109,63 @@ public class Tree
         }
     }
     
-    
+    public void remove(Node root,int key){
+        Node p = root,pad = null,ant,t;
+        buscar(key,p,pad,true);
+        if (p!=null){
+            if(p.left==null && p.right == null){
+                if(pad == null){
+                    this.root = null;
+                }else{
+                    if(pad.left == p)
+                        pad.left=null;
+                    else
+                        pad.right = null;
+                }
+            }else{
+                if(p.left!=null && p.right!=null){
+                    ant = p;
+                    t = p.left;
+                    while(t.right!=null){
+                        ant = t;
+                        t = t.right;
+                    }
+                    p.key = t.key;
+                    if(ant.key == p.key){
+                        ant.left = t.left;
+                    }else{
+                        ant.right = t.left;
+                    }
+                    p = t;
+                    p.left = null;
+                }else{
+                    if(p.left != null){
+                        if(pad == null){
+                            root = p.left;
+                        }else{
+                            if(pad.right.equals(p)){
+                                pad.right = p.left;
+                            }else{
+                                pad.left = p.left;
+                            }
+                        }
+                        p.left = null;
+                    }else{
+                        if(pad == null){
+                            root = p.right;
+                        }else{
+                            if(p.right.equals(p)){
+                                pad.right = p.right;
+                            }else{
+                                pad.left = p.right;
+                            }
+                        }
+                        p.right = null;
+                    }
+                }
+                p = null;
+            }
+            System.out.println("Nodo eliminado.");
+        }
+    }
 }
