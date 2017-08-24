@@ -19,6 +19,30 @@ public class Tree
     public Tree(){
     }
     
+    public void preOrder(Node root){
+        if (root!=null) {
+            System.out.print(root.getKey());
+            preOrder(root.getLeft());
+            preOrder(root.getRight());
+        }
+    }
+    
+    public void inOrder(Node root){
+        if (root!=null) {
+            inOrder(root.getLeft());
+            System.out.print(root.getKey());
+            inOrder(root.getRight());
+        }
+    }
+    
+    public void postOrder(Node root){
+        if (root!=null) {
+            postOrder(root.getLeft());
+            postOrder(root.getRight());
+            System.out.print(root.getKey());
+        }
+    }
+    
     public void insert(Node root, int newKey){
         if (root==null){
             this.root = new Node(newKey);
@@ -57,7 +81,33 @@ public class Tree
             }
         }
     }
+    //El mio
+    public void remove(Node root, int key){
+        Queue<Node> queue = new LinkedList();
+        queue.add(root);
+        while (!queue.isEmpty()) {            
+            Node temp = queue.poll();
+            
+            if (temp.left!=null) {
+//                if(temp.left.right)
+            }
+            if (temp.right!=null) {
+                queue.add(temp.right);
+            }
+        }
+    }
     
+    public void buscar(int key, Node p, Node pad,boolean sw){
+        if (p!=null && sw){
+            if (p.key<key){
+                buscar(key,p.right,p,sw);
+            }else if(p.key>key){
+                buscar(key,p.left,p,sw);
+            }else{
+                sw = false;
+            }
+        }
+    }
     
     
 }

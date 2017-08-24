@@ -23,6 +23,8 @@ public class BST
         insertNodes(tree);
         System.out.println("Recorrido por niveles: ");
         tree.orderLevel(tree.root);
+        System.out.println("\nRecorrido inroder: ");
+        tree.inOrder(tree.root);
     }
     
     public static void insertNodes(Tree tree){
