@@ -127,16 +127,22 @@ public class Tree
     public void greatestofMinors(Node root) {
         Node father;
         Node node = root.left;
-        do {
+        while (node.right != null) {
             father = node;
             node = node.right;
-        } while (node.right != null);
+        } 
         //father.setRightChild(null);
         root.setKey(node.getKey());
     }
 
     public void remove(Node root, Node father, int key) {
-        if (root.getKey() == key) {
+        if (root.getKey() != key) {
+            if (key < root.getKey()) {
+                remove(root.left, root, key);
+            }else{
+                remove(root.right, root, key);
+            }
+        } else {
             if (root.left == null && root.right != null) {
                 lowestofMajors(root);
             }
@@ -147,14 +153,7 @@ public class Tree
                 lowestofMajors(root);
             }
             if (root.right == null && root.left == null) {
-                father = null;
-            }
-        } else {
-            if (key < root.getKey()) {
-                remove(root.left, root, key);
-            }
-            if (key > root.getKey()) {
-                remove(root.right, root, key);
+                root = null;
             }
         }
     }
