@@ -30,7 +30,7 @@ public class Tree
     public void inOrder(Node root){
         if (root!=null) {
             inOrder(root.getLeft());
-            System.out.print(root.getKey());
+            System.out.print(Integer.toString(root.getKey())+"  ");
             inOrder(root.getRight());
         }
     }
@@ -81,6 +81,7 @@ public class Tree
             }
         }
     }
+    
     //El mio
     public void removeN(Node root, int key){
         Queue<Node> queue = new LinkedList();
@@ -109,6 +110,56 @@ public class Tree
         }
     }
     
+    public void lowestofMajors(Node root) {
+        Node father = null;
+        Node node = root.right;
+        while(true){
+            if (node.left == null) {
+                break;
+            }
+            father = node;
+            node = node.left;
+        }
+//        father.setLeftChild(null);
+        root.setKey(node.getKey());
+    }
+
+    public void greatestofMinors(Node root) {
+        Node father;
+        Node node = root.left;
+        do {
+            father = node;
+            node = node.right;
+        } while (node.right != null);
+        //father.setRightChild(null);
+        root.setKey(node.getKey());
+    }
+
+    public void remove(Node root, Node father, int key) {
+        if (root.getKey() == key) {
+            if (root.left == null && root.right != null) {
+                lowestofMajors(root);
+            }
+            if (root.right == null && root.left != null) {
+                greatestofMinors(root);
+            }
+            if (root.right != null && root.left != null) {
+                lowestofMajors(root);
+            }
+            if (root.right == null && root.left == null) {
+                father = null;
+            }
+        } else {
+            if (key < root.getKey()) {
+                remove(root.left, root, key);
+            }
+            if (key > root.getKey()) {
+                remove(root.right, root, key);
+            }
+        }
+    }
+    
+    //El de la profe
     public void remove(Node root,int key){
         Node p = root,pad = null,ant,t;
         buscar(key,p,pad,true);

@@ -48,7 +48,7 @@ public class BST
         Scanner leer = new Scanner(System.in);
         System.out.print("Digite el nodo que desea eliminar: ");
         int key = leer.nextInt();
-        tree.remove(tree.root, key);
+        tree.remove(tree.root,null, key);
     }
     
 }
