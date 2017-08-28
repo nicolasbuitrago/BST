@@ -110,7 +110,7 @@ public class Tree
         }
     }
     
-    public void lowestofMajors(Node root) {
+    public void menorDeMayores(Node root) {
         Node father = null;
         Node node = root.right;
         while (node.left != null) {
@@ -121,7 +121,7 @@ public class Tree
         root.setKey(node.getKey());
     }
 
-    public void greatestofMinors(Node root) {
+    public void mayorDeMenores(Node root) {
         Node father = null;
         Node node = root.left;
         while (node.right != null) {
@@ -141,13 +141,13 @@ public class Tree
             }
         } else {
             if (root.left == null && root.right != null) {
-                lowestofMajors(root);
+                menorDeMayores(root);
             }
             if (root.right == null && root.left != null) {
-                greatestofMinors(root);
+                mayorDeMenores(root);
             }
             if (root.right != null && root.left != null) {
-                lowestofMajors(root);
+                menorDeMayores(root);
             }
             if (root.right == null && root.left == null) {
                 root = null;

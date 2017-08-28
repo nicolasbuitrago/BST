@@ -20,7 +20,7 @@ public class BST
     public static void main(String[] args)
     {
         Tree tree = new Tree();
-        insertNodes(tree);
+        testPrueba(tree);
         System.out.println("Recorrido por niveles: ");
         tree.orderLevel(tree.root);
         System.out.println("\nRecorrido inroder: ");
@@ -51,4 +51,20 @@ public class BST
         tree.remove(tree.root,null, key);
     }
     
+    public static void testPrueba(Tree tree){
+        tree.insert(tree.root, 20);
+        tree.insert(tree.root, 12);
+        tree.insert(tree.root, 30);
+        tree.insert(tree.root, 5);
+        tree.insert(tree.root, 15);
+        tree.insert(tree.root, 25);
+        tree.insert(tree.root, 35);
+        tree.insert(tree.root, 3);
+        tree.insert(tree.root, 6);
+        tree.insert(tree.root, 14);
+        tree.insert(tree.root, 22);
+        tree.insert(tree.root, 2);
+        tree.insert(tree.root, 13);
+        tree.insert(tree.root, 40);
+    }
 }
