@@ -82,7 +82,7 @@ public class Tree
         }
     }
     
-    public void menorDeMayores(Node root) {//Funciona bien
+    public void menorDeMayores(Node root) {
         Node father = null;
         Node node = root.right;
         while (node.left != null) {
@@ -118,7 +118,7 @@ public class Tree
                 menorDeMayores(root);
             }
             if (root.right == null && root.left != null) {
-                mayorDeMenores(root); //Funciona Perfecto
+                mayorDeMenores(root);
             }
             if (root.right != null && root.left != null) {
                 menorDeMayores(root);

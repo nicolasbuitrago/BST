@@ -9,44 +9,36 @@ package bst;
  *
  * @author nicolasbuitrago
  */
-public class Node
-{
+public class Node {
     int key;
     Node left;
     Node right;
 
-    public Node(int key)
-    {
+    public Node(int key){
         this.key = key;
     }
 
-    public int getKey()
-    {
+    public int getKey(){
         return key;
     }
 
-    public void setKey(int key)
-    {
+    public void setKey(int key){
         this.key = key;
     }
 
-    public Node getLeft()
-    {
+    public Node getLeft(){
         return left;
     }
 
-    public void setLeft(Node left)
-    {
+    public void setLeft(Node left){
         this.left = left;
     }
 
-    public Node getRight()
-    {
+    public Node getRight(){
         return right;
     }
 
-    public void setRight(Node right)
-    {
+    public void setRight(Node right){
         this.right = right;
     }
 
