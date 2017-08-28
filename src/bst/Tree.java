@@ -110,15 +110,16 @@ public class Tree
         }
     }
     
-    public void menorDeMayores(Node root) {
+    public void menorDeMayores(Node root) {//Funciona bien
         Node father = null;
         Node node = root.right;
         while (node.left != null) {
             father = node;
             node = node.left;
         }
-//        if(father!=null)father.left = null;
-        root.setKey(node.getKey());
+        if(father!=null) father.setLeft(null);
+        else{root.setRight(node.getRight());}
+        root.setKey(node.getKey()); 
     }
 
     public void mayorDeMenores(Node root) {
@@ -128,9 +129,25 @@ public class Tree
             father = node;
             node = node.right;
         } 
-//        if(father!=null)father.right = null;
-        root.setKey(node.getKey());
+        if(father!=null) father.setRight(null);
+        else{root.setLeft(node.getLeft());}
+        root.setKey(node.getKey()); 
     }
+    
+//    public void delete(Node node){
+//        if (node.left == null && node.right != null) {
+//            menorDeMayores(node);
+//        }
+//        if (node.right == null && node.left != null) {
+//            mayorDeMenores(node);
+//        }
+//        if (node.right != null && node.left != null) {
+//            menorDeMayores(node);
+//        }
+//        if (node.right == null && node.left == null) {
+//            node = null;
+//        }
+//    }
 
     public void remove(Node root, Node father, int key) {
         if (root.getKey() != key) {
@@ -144,19 +161,20 @@ public class Tree
                 menorDeMayores(root);
             }
             if (root.right == null && root.left != null) {
-                mayorDeMenores(root);
+                mayorDeMenores(root); //Funciona Perfecto
             }
             if (root.right != null && root.left != null) {
                 menorDeMayores(root);
             }
             if (root.right == null && root.left == null) {
-                root = null;
+                if(father.left.key == root.key) father.setLeft(null);
+                else father.setRight(null);
             }
         }
     }
     
     //El de la profe
-    public void remove(Node root,int key){
+    public void remove(Node root,int key, int opc){
         Node p = root,pad = null,ant,t;
         buscar(key,p,pad,true);
         if (p!=null){

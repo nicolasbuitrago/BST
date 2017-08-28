@@ -23,8 +23,8 @@ public class BST
         testPrueba(tree);
         System.out.println("Recorrido por niveles: ");
         tree.orderLevel(tree.root);
-        System.out.println("\nRecorrido inroder: ");
-        tree.inOrder(tree.root);
+//        System.out.println("\nRecorrido inroder: ");
+//        tree.inOrder(tree.root);
         System.out.println("");
         removeNode(tree);
         System.out.println("");
@@ -66,5 +66,8 @@ public class BST
         tree.insert(tree.root, 2);
         tree.insert(tree.root, 13);
         tree.insert(tree.root, 40);
+        tree.insert(tree.root, 36);
+        tree.insert(tree.root, 37);
+        tree.insert(tree.root, 38);
     }
 }

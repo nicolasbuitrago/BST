@@ -49,6 +49,10 @@ public class Node
     {
         this.right = right;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Nod.key = " + key + "\n node.left = "+this.left.key+"\n node.right = "+this.right.key;
+    }
+     
 }
